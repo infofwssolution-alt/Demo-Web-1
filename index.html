@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelvyn | Cold-Chain Telemetry &amp; Compliance Infrastructure</title>
+    <meta name="description" content="Real-time cold-chain monitoring for pharmaceutical distributors, vaccine logistics, and food cold storage. Wireless IoT temperature/humidity sensors, live alerts, and automated GDP compliance reports." />
+    <meta property="og:title" content="Kelvyn — Every degree, accounted for." />
+    <meta property="og:description" content="Real-time cold-chain telemetry and automated compliance reports for pharmaceutical and life-sciences logistics." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0b0f17" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Kelvyn AI Assistant -->
+    <!-- REPLACE BACKEND_URL with your production assistant server URL before deploying -->
+    <script
+      src="BACKEND_URL/widget/widget.js"
+      data-api-url="BACKEND_URL"
+      data-client-id="kelvyn-site"
+      defer>
+    </script>
+  </body>
+</html>
