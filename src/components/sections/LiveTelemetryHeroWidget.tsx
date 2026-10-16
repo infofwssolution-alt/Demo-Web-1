@@ -1,6 +1,6 @@
 import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Activity, ShieldAlert, CheckCircle2, Wifi, BatteryCharging, Radio } from "lucide-react"
+import { Activity, ShieldAlert, CheckCircle2, Wifi, BatteryCharging, Radio, Sparkles } from "lucide-react"
 
 export const LiveTelemetryHeroWidget = () => {
   const [temp, setTemp] = React.useState<number>(4.2)
@@ -32,59 +32,85 @@ export const LiveTelemetryHeroWidget = () => {
   }, [])
 
   return (
-    <div className="w-full rounded border-2 border-border bg-card shadow-lg p-5 overflow-hidden relative">
-      {/* CAD technical coordinate header */}
-      <div className="flex items-center justify-between pb-3 border-b border-border text-[11px] font-mono text-muted-foreground bg-secondary/30 -mx-5 -mt-5 p-3 px-5 mb-4">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="w-full rounded-2xl glass-panel p-6 shadow-2xl relative overflow-hidden group"
+    >
+      {/* Dynamic ambient glass reflection highlight */}
+      <div className="absolute -top-24 -left-24 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none animate-ambient-glow" />
+      <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Floating glass top status bar */}
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-border/60 text-[11px] font-mono text-muted-foreground relative z-10">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse"></span>
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+          </span>
           <span className="font-bold text-foreground">TELEMETRY CONSOLE // NODE-04</span>
           <span className="text-border">|</span>
-          <span>ZÜRICH HUB // COLD ROOM B</span>
+          <span className="hidden sm:inline">ZÜRICH HUB // COLD ROOM B</span>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-amber-500 font-semibold flex items-center gap-1">
-            <Radio className="h-3 w-3" /> LTE-M LIVE
+          <span className="text-amber-600 dark:text-amber-400 font-semibold flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30">
+            <Radio className="h-3 w-3 animate-pulse" /> LTE-M ONLINE
           </span>
           <span className="text-muted-foreground">LAT 47.37° N</span>
         </div>
       </div>
 
-      {/* Main Instrumentation Display */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-        <div className="p-3 rounded border border-border bg-secondary/40">
+      {/* Main Glass Instrumentation Readouts */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4 relative z-10">
+        <motion.div 
+          whileHover={{ y: -2 }}
+          className="p-3.5 rounded-xl glass-panel-subtle border border-border/80 transition-all hover:border-amber-500/50"
+        >
           <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
             CORE TEMPERATURE
           </div>
-          <div className="flex items-baseline gap-1.5 mt-1">
-            <span className="text-3xl font-extrabold font-mono text-foreground tracking-tight">
+          <div className="flex items-baseline gap-1.5 mt-1.5">
+            <motion.span 
+              key={temp}
+              initial={{ opacity: 0.8 }}
+              animate={{ opacity: 1 }}
+              className="text-3xl font-extrabold font-mono text-foreground tracking-tight"
+            >
               +{temp}°C
-            </span>
+            </motion.span>
             <span className="text-[11px] font-mono text-amber-500 font-bold">±0.1°</span>
           </div>
           <div className="text-[10px] font-mono text-muted-foreground mt-1">
-            SPEC ENVELOPE: +2.0°C / +8.0°C
+            TARGET: +2.0°C - +8.0°C
           </div>
-        </div>
+        </motion.div>
 
-        <div className="p-3 rounded border border-border bg-secondary/40">
+        <motion.div 
+          whileHover={{ y: -2 }}
+          className="p-3.5 rounded-xl glass-panel-subtle border border-border/80 transition-all hover:border-amber-500/50"
+        >
           <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
             RELATIVE HUMIDITY
           </div>
-          <div className="flex items-baseline gap-1 mt-1">
+          <div className="flex items-baseline gap-1.5 mt-1.5">
             <span className="text-3xl font-extrabold font-mono text-foreground tracking-tight">
               {humidity}%
             </span>
           </div>
           <div className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-bold mt-1">
-            STABLE [45% - 55%]
+            OPTIMAL RANGE
           </div>
-        </div>
+        </motion.div>
 
-        <div className="p-3 rounded border border-border bg-secondary/40">
+        <motion.div 
+          whileHover={{ y: -2 }}
+          className="p-3.5 rounded-xl glass-panel-subtle border border-border/80 transition-all hover:border-amber-500/50"
+        >
           <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
             CALCULATED MKT
           </div>
-          <div className="flex items-baseline gap-1 mt-1">
+          <div className="flex items-baseline gap-1.5 mt-1.5">
             <span className="text-3xl font-extrabold font-mono text-foreground tracking-tight">
               +4.18°C
             </span>
@@ -92,76 +118,90 @@ export const LiveTelemetryHeroWidget = () => {
           <div className="text-[10px] font-mono text-muted-foreground mt-1">
             USP &lt;1079&gt; STANDARD
           </div>
-        </div>
+        </motion.div>
 
-        <div className="p-3 rounded border border-border bg-secondary/40">
+        <motion.div 
+          whileHover={{ y: -2 }}
+          className="p-3.5 rounded-xl glass-panel-subtle border border-border/80 transition-all hover:border-amber-500/50"
+        >
           <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
             AUDIT STATUS
           </div>
-          <div className="flex items-baseline gap-1 mt-1">
+          <div className="flex items-baseline gap-1.5 mt-1.5">
             <span className="text-3xl font-extrabold font-mono text-amber-500 tracking-tight">
               PASS
             </span>
           </div>
           <div className="text-[10px] font-mono text-muted-foreground mt-1">
-            21 CFR PART 11 COMPLIANT
+            21 CFR PART 11
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* CAD Precision Telemetry Chart with Yellow Signal Line */}
-      <div className="relative h-32 w-full border border-border rounded bg-card p-2 overflow-hidden flex flex-col justify-end bg-cad-grid-dense">
+      {/* CAD Precision Telemetry Chart with Glass backdrop & Animated Yellow Signal Line */}
+      <div className="relative h-36 w-full rounded-xl glass-panel-subtle border border-border/70 p-2 overflow-hidden flex flex-col justify-end bg-cad-grid-dense z-10">
+        {/* Subtle animated scan beam */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-400/5 to-transparent h-16 w-full animate-scan-line pointer-events-none" />
+
         {/* Upper and Lower GDP Bounds */}
-        <div className="absolute top-2 left-3 text-[10px] font-mono text-amber-500/90 font-bold flex items-center gap-1.5 z-10">
-          <span className="inline-block w-3 h-0.5 bg-amber-500"></span> UPPER LIMIT: +8.00°C
+        <div className="absolute top-2.5 left-3 text-[10px] font-mono text-amber-500 font-bold flex items-center gap-1.5 z-10 bg-card/60 px-2 py-0.5 rounded backdrop-blur-sm border border-border/50">
+          <span className="inline-block w-2.5 h-0.5 bg-amber-500"></span> UPPER GDP BOUND: +8.00°C
         </div>
-        <div className="absolute bottom-2 left-3 text-[10px] font-mono text-muted-foreground/70 font-bold flex items-center gap-1.5 z-10">
-          <span className="inline-block w-3 h-0.5 bg-border"></span> LOWER LIMIT: +2.00°C
+        <div className="absolute bottom-2.5 left-3 text-[10px] font-mono text-muted-foreground font-bold flex items-center gap-1.5 z-10 bg-card/60 px-2 py-0.5 rounded backdrop-blur-sm border border-border/50">
+          <span className="inline-block w-2.5 h-0.5 bg-slate-400"></span> LOWER GDP BOUND: +2.00°C
         </div>
 
         <svg viewBox="0 0 600 100" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="yellowGlassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.0" />
+            </linearGradient>
+          </defs>
+
           {/* Safe operational band */}
-          <rect x="0" y="20" width="600" height="60" fill="rgba(245, 158, 11, 0.05)" />
+          <rect x="0" y="20" width="600" height="60" fill="rgba(245, 158, 11, 0.04)" />
           <line x1="0" y1="20" x2="600" y2="20" stroke="#F59E0B" strokeDasharray="4 4" strokeWidth="1.5" opacity="0.6" />
           <line x1="0" y1="80" x2="600" y2="80" stroke="#94A3B8" strokeDasharray="4 4" strokeWidth="1" opacity="0.4" />
 
           {/* Area fill */}
           <path
             d="M 0,54 Q 75,48 150,52 T 300,47 T 450,51 T 600,48 L 600,100 L 0,100 Z"
-            fill="rgba(245, 158, 11, 0.12)"
+            fill="url(#yellowGlassGrad)"
           />
 
-          {/* High-visibility Signal Yellow Graph Line */}
+          {/* Animated Yellow Signal Graph Line */}
           <motion.path
             d="M 0,54 Q 75,48 150,52 T 300,47 T 450,51 T 600,48"
             fill="none"
             stroke="#F59E0B"
-            strokeWidth="3"
+            strokeWidth="3.5"
             strokeLinecap="round"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            transition={{ duration: 1.8, ease: "easeOut" }}
           />
 
-          <circle cx="600" cy="48" r="5" fill="#FBBF24" />
-          <circle cx="600" cy="48" r="2.5" fill="#13171F" />
+          <circle cx="600" cy="48" r="6" fill="#FBBF24" className="animate-ping opacity-75" />
+          <circle cx="600" cy="48" r="4.5" fill="#F59E0B" />
+          <circle cx="600" cy="48" r="2" fill="#FFFFFF" />
         </svg>
       </div>
 
-      {/* Incident Remediation Simulation Banner */}
-      <div className="mt-3">
+      {/* Incident Remediation Simulation Banner with Glass Frosting */}
+      <div className="mt-3.5 relative z-10">
         <AnimatePresence mode="wait">
           {storyStage === 'nominal' && (
             <motion.div
               key="nominal"
-              initial={{ opacity: 0, y: 3 }}
+              initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -3 }}
-              className="flex items-center justify-between text-xs font-mono p-2.5 rounded bg-secondary/80 border border-border text-foreground"
+              exit={{ opacity: 0, y: -4 }}
+              className="flex items-center justify-between text-xs font-mono p-3 rounded-xl glass-panel-subtle border border-emerald-500/30 text-foreground"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
-                <span>ALL SENSORS NOMINAL: 14 Cold Zones reporting continuous data within safe regulatory tolerances.</span>
+                <span>ALL SENSORS NOMINAL: 14 Cold Zones reporting continuous telemetry within validated tolerances.</span>
               </div>
               <span className="hidden sm:inline text-[10px] text-muted-foreground font-bold">DIGITAL SIGNATURE VALID</span>
             </motion.div>
@@ -170,16 +210,16 @@ export const LiveTelemetryHeroWidget = () => {
           {storyStage === 'warning' && (
             <motion.div
               key="warning"
-              initial={{ opacity: 0, y: 3 }}
+              initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -3 }}
-              className="flex items-center justify-between text-xs font-mono p-2.5 rounded bg-amber-500 text-slate-950 font-bold border border-amber-600"
+              exit={{ opacity: 0, y: -4 }}
+              className="flex items-center justify-between text-xs font-mono p-3 rounded-xl bg-amber-500 text-slate-950 font-bold border border-amber-600 shadow-md"
             >
-              <div className="flex items-center gap-2">
-                <ShieldAlert className="h-4 w-4 text-slate-950 shrink-0" />
-                <span>EXCURSION ALERT: Zone B door ajar (+0.4°C/min delta). Automated SMS &amp; phone escalation dispatched.</span>
+              <div className="flex items-center gap-2.5">
+                <ShieldAlert className="h-4 w-4 text-slate-950 shrink-0 animate-bounce" />
+                <span>EXCURSION ALERT: Zone B door ajar (+0.4°C/min delta). Automated SMS &amp; voice escalation dispatched.</span>
               </div>
-              <span className="hidden sm:inline text-[10px] bg-slate-950 text-amber-400 px-2 py-0.5 rounded">
+              <span className="hidden sm:inline text-[10px] bg-slate-950 text-amber-400 px-2 py-0.5 rounded font-bold">
                 ESCALATION T+2s
               </span>
             </motion.div>
@@ -188,20 +228,20 @@ export const LiveTelemetryHeroWidget = () => {
           {storyStage === 'remediating' && (
             <motion.div
               key="remediating"
-              initial={{ opacity: 0, y: 3 }}
+              initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -3 }}
-              className="flex items-center justify-between text-xs font-mono p-2.5 rounded bg-secondary/80 border border-border text-foreground"
+              exit={{ opacity: 0, y: -4 }}
+              className="flex items-center justify-between text-xs font-mono p-3 rounded-xl glass-panel-subtle border border-amber-500/40 text-foreground"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 <Activity className="h-4 w-4 text-amber-500 shrink-0 animate-spin" />
-                <span>CORRECTIVE ACTION: Door secured by dock supervisor. Temp stabilizing (+4.22°C). Logged to FDA audit ledger.</span>
+                <span>CORRECTIVE ACTION: Door secured by dock supervisor. Temp stabilizing (+4.22°C). Logged to FDA ledger.</span>
               </div>
               <span className="hidden sm:inline text-[10px] text-muted-foreground">RESOLVED IN 2M 14S</span>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   )
 }

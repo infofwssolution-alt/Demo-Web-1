@@ -2,7 +2,7 @@
 
 @layer base {
   :root {
-    /* Clean, crisp warm industrial white & amber/yellow palette */
+    /* Clean, crisp industrial white & amber/yellow palette */
     --background: 45 20% 99%;         /* Crisp industrial off-white #FAF9F5 */
     --foreground: 220 25% 10%;         /* Deep technical ink slate #13171F */
     
@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 25% 10%;
     
-    /* Primary Signal Amber / Warm Yellow (Caterpillar / Industrial Telemetry) */
+    /* Primary Signal Amber / Warm Yellow (Industrial Telemetry) */
     --primary: 43 96% 48%;              /* Precision Industrial Amber #F59E0B */
     --primary-foreground: 220 25% 10%; /* High contrast dark text on yellow */
     
@@ -32,7 +32,7 @@
     --border: 220 15% 88%;             /* Crisp architectural line #DEE2E6 */
     --input: 220 15% 88%;
     --ring: 43 96% 48%;
-    --radius: 0.25rem;                 /* Sharp, disciplined corners for corporate engineering */
+    --radius: 0.5rem;                  /* Polished modern corner radius */
 
     /* Telemetry Accent Tokens */
     --yellow-signal: #F59E0B;
@@ -43,6 +43,12 @@
     --steel-border: #D1D5DB;
     --grid-line: rgba(17, 24, 39, 0.08); /* Distinct, visible architectural grid line */
     --grid-major: rgba(17, 24, 39, 0.16);
+
+    /* Glassmorphism tokens - Light Mode */
+    --glass-bg: rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.9);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    --glass-highlight: rgba(245, 158, 11, 0.12);
   }
 
   .dark {
@@ -82,8 +88,14 @@
     --yellow-border: rgba(245, 158, 11, 0.4);
     
     --steel-border: #2D3748;
-    --grid-line: rgba(255, 255, 255, 0.06);
-    --grid-major: rgba(255, 255, 255, 0.12);
+    --grid-line: rgba(255, 255, 255, 0.07);
+    --grid-major: rgba(255, 255, 255, 0.14);
+
+    /* Glassmorphism tokens - Dark Mode */
+    --glass-bg: rgba(19, 23, 32, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    --glass-highlight: rgba(245, 158, 11, 0.16);
   }
 }
 
@@ -100,7 +112,31 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Distinct Technical Grid System */
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-panel-amber {
+  background: linear-gradient(135deg, var(--glass-bg), var(--glass-highlight));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(245, 158, 11, 0.12);
+}
+
+.glass-panel-subtle {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Distinct Technical Grid System with subtle radial depth */
 .bg-cad-grid {
   background-size: 40px 40px;
   background-image: 
@@ -115,9 +151,34 @@ body {
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
 }
 
-/* Technical crosshair & corner markers */
-.border-blueprint {
-  border-color: var(--steel-border);
+/* Smooth ambient pulse animation */
+@keyframes ambientGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.08);
+  }
+}
+
+.animate-ambient-glow {
+  animation: ambientGlow 8s ease-in-out infinite;
+}
+
+/* Subtle scanning beam for radar/telemetry */
+@keyframes telemetryScan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(400%);
+  }
+}
+
+.animate-scan-line {
+  animation: telemetryScan 6s linear infinite;
 }
 
 .font-mono-numbers {
