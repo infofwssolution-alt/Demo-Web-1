@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils"
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "secondary" | "outline" | "ghost" | "destructive" | "glacier"
+  variant?: "default" | "secondary" | "outline" | "ghost" | "destructive" | "glacier" | "signal"
   size?: "default" | "sm" | "lg" | "icon"
 }
 
@@ -13,17 +13,16 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+          "inline-flex items-center justify-center whitespace-nowrap rounded font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-500 disabled:pointer-events-none disabled:opacity-50 cursor-pointer text-xs uppercase tracking-wider font-mono",
           {
-            "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm": variant === "default",
-            "bg-sky-500 text-white hover:bg-sky-400 shadow-sm shadow-sky-500/25": variant === "glacier",
-            "bg-secondary text-secondary-foreground hover:bg-secondary/80": variant === "secondary",
-            "border border-border bg-transparent hover:bg-secondary hover:text-foreground": variant === "outline",
+            "bg-amber-500 text-slate-950 hover:bg-amber-400 font-bold shadow-sm border border-amber-600/30": variant === "default" || variant === "glacier" || variant === "signal",
+            "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border": variant === "secondary",
+            "border border-border bg-card hover:bg-secondary hover:text-foreground text-foreground": variant === "outline",
             "hover:bg-secondary hover:text-foreground": variant === "ghost",
             "bg-destructive text-destructive-foreground hover:bg-destructive/90": variant === "destructive",
-            "h-9 px-4 py-2": size === "default",
-            "h-8 rounded-md px-3 text-xs": size === "sm",
-            "h-11 rounded-md px-6 text-base font-medium": size === "lg",
+            "h-10 px-4 py-2": size === "default",
+            "h-8 px-3 text-[11px]": size === "sm",
+            "h-12 px-6 text-sm font-bold": size === "lg",
             "h-9 w-9 p-0": size === "icon",
           },
           className

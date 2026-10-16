@@ -7,19 +7,18 @@ export const Badge = ({
   children,
   ...props
 }: React.HTMLAttributes<HTMLDivElement> & {
-  variant?: "default" | "secondary" | "outline" | "signal-alert" | "signal-nominal" | "glacier"
+  variant?: "default" | "secondary" | "outline" | "signal-alert" | "signal-nominal" | "glacier" | "yellow"
 }) => {
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-mono font-medium transition-colors",
+        "inline-flex items-center gap-1.5 rounded px-2.5 py-0.5 text-[11px] font-mono uppercase tracking-wider font-semibold transition-colors border",
         {
-          "bg-primary/10 text-primary border border-primary/20": variant === "default",
-          "bg-secondary text-secondary-foreground": variant === "secondary",
-          "border border-border text-muted-foreground": variant === "outline",
-          "bg-amber-500/10 text-amber-500 dark:text-amber-400 border border-amber-500/20": variant === "signal-alert",
-          "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20": variant === "signal-nominal",
-          "bg-sky-500/10 text-sky-500 border border-sky-500/30": variant === "glacier",
+          "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/40": variant === "default" || variant === "glacier" || variant === "yellow",
+          "bg-secondary text-secondary-foreground border-border": variant === "secondary",
+          "border-border bg-card text-foreground": variant === "outline",
+          "bg-amber-500 text-slate-950 font-bold border-amber-600": variant === "signal-alert",
+          "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30": variant === "signal-nominal",
         },
         className
       )}

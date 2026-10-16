@@ -2,68 +2,88 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --card-subtle: 210 40% 96%;
+    /* Clean, crisp warm industrial white & amber/yellow palette */
+    --background: 45 20% 99%;         /* Crisp industrial off-white #FAF9F5 */
+    --foreground: 220 25% 10%;         /* Deep technical ink slate #13171F */
+    
+    --card: 0 0% 100%;                 /* Clean pure white card #FFFFFF */
+    --card-foreground: 220 25% 10%;
+    --card-subtle: 45 15% 96%;         /* Crisp warm surface #F5F4EE */
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 199 89% 48%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222 47% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 199 89% 48%;
-    --radius: 0.5rem;
+    --popover-foreground: 220 25% 10%;
+    
+    /* Primary Signal Amber / Warm Yellow (Caterpillar / Industrial Telemetry) */
+    --primary: 43 96% 48%;              /* Precision Industrial Amber #F59E0B */
+    --primary-foreground: 220 25% 10%; /* High contrast dark text on yellow */
+    
+    --secondary: 45 15% 94%;
+    --secondary-foreground: 220 25% 15%;
+    
+    --muted: 45 10% 93%;
+    --muted-foreground: 215 16% 40%;   /* Technical steel slate #5F6B7D */
+    
+    --accent: 43 96% 50%;
+    --accent-foreground: 220 25% 10%;
+    
+    --destructive: 0 84.2% 55%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 15% 88%;             /* Crisp architectural line #DEE2E6 */
+    --input: 220 15% 88%;
+    --ring: 43 96% 48%;
+    --radius: 0.25rem;                 /* Sharp, disciplined corners for corporate engineering */
 
-    /* Kelvyn Cold-Chain Specific Tokens */
-    --glacier-cyan: #0284c7;
-    --glacier-glow: rgba(2, 132, 199, 0.15);
-    --signal-alert: #d97706;
-    --signal-alert-bg: rgba(217, 119, 6, 0.1);
-    --signal-nominal: #059669;
-    --signal-nominal-bg: rgba(5, 150, 105, 0.1);
-    --grid-line: rgba(15, 23, 42, 0.05);
+    /* Telemetry Accent Tokens */
+    --yellow-signal: #F59E0B;
+    --yellow-bright: #FBBF24;
+    --yellow-soft: #FEF3C7;
+    --yellow-border: #FCD34D;
+    
+    --steel-border: #D1D5DB;
+    --grid-line: rgba(17, 24, 39, 0.08); /* Distinct, visible architectural grid line */
+    --grid-major: rgba(17, 24, 39, 0.16);
   }
 
   .dark {
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
-    --card: 217 33% 11%;
-    --card-foreground: 210 40% 98%;
-    --card-subtle: 217 33% 14%;
-    --popover: 217 33% 11%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 199 89% 48%;
-    --primary-foreground: 222 47% 7%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
-    --ring: 199 89% 48%;
+    /* High-contrast precision dark telemetry theme with vibrant yellow accents */
+    --background: 220 24% 7%;          /* Midnight technical slate #0D1117 */
+    --foreground: 45 20% 98%;          /* Crisp technical white #F9F9F7 */
+    
+    --card: 220 22% 10%;               /* Solid architectural module #131720 */
+    --card-foreground: 45 20% 98%;
+    --card-subtle: 220 20% 13%;
+    
+    --popover: 220 22% 10%;
+    --popover-foreground: 45 20% 98%;
+    
+    --primary: 43 96% 48%;              /* Vibrant Industrial Amber #F59E0B */
+    --primary-foreground: 220 25% 8%;
+    
+    --secondary: 220 20% 14%;
+    --secondary-foreground: 45 20% 98%;
+    
+    --muted: 220 20% 14%;
+    --muted-foreground: 215 15% 65%;   /* Crisp silver slate #9CA3AF */
+    
+    --accent: 43 96% 48%;
+    --accent-foreground: 220 25% 8%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 18% 20%;             /* Crisp, clear hairline borders #252D3B */
+    --input: 220 18% 20%;
+    --ring: 43 96% 48%;
 
-    /* Kelvyn Cold-Chain Dark Tokens */
-    --glacier-cyan: #0ea5e9;
-    --glacier-glow: rgba(14, 165, 233, 0.18);
-    --signal-alert: #f59e0b;
-    --signal-alert-bg: rgba(245, 158, 11, 0.12);
-    --signal-nominal: #10b981;
-    --signal-nominal-bg: rgba(16, 185, 129, 0.12);
-    --grid-line: rgba(241, 245, 249, 0.04);
+    --yellow-signal: #F59E0B;
+    --yellow-bright: #FBBF24;
+    --yellow-soft: rgba(245, 158, 11, 0.15);
+    --yellow-border: rgba(245, 158, 11, 0.4);
+    
+    --steel-border: #2D3748;
+    --grid-line: rgba(255, 255, 255, 0.06);
+    --grid-major: rgba(255, 255, 255, 0.12);
   }
 }
 
@@ -80,20 +100,26 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Precision Grid Texture */
-.bg-grid-pattern {
-  background-size: 32px 32px;
+/* Distinct Technical Grid System */
+.bg-cad-grid {
+  background-size: 40px 40px;
   background-image: 
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
 }
 
-.bg-dot-pattern {
-  background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
-  background-size: 24px 24px;
+.bg-cad-grid-dense {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
 }
 
-/* Tabular mono numbers for specs */
+/* Technical crosshair & corner markers */
+.border-blueprint {
+  border-color: var(--steel-border);
+}
+
 .font-mono-numbers {
   font-family: 'JetBrains Mono', 'Geist Mono', monospace;
   font-feature-settings: 'tnum' on, 'zero' on;
