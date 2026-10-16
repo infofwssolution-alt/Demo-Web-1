@@ -2,17 +2,17 @@ import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 
 export const ThemeToggle = () => {
-  const [isDark, setIsDark] = React.useState<boolean>(true)
+  const [isDark, setIsDark] = React.useState<boolean>(false)
 
   React.useEffect(() => {
     const root = document.documentElement
     const savedTheme = localStorage.getItem("kelvyn-theme")
-    if (savedTheme === "light") {
-      root.classList.remove("dark")
-      setIsDark(false)
-    } else {
+    if (savedTheme === "dark") {
       root.classList.add("dark")
       setIsDark(true)
+    } else {
+      root.classList.remove("dark")
+      setIsDark(false)
     }
   }, [])
 
