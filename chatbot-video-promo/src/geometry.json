@@ -1,0 +1,66 @@
+{
+  "fullHeight": 4541,
+  "fullDpr": 1.25,
+  "form": {
+    "name": {
+      "x": 369,
+      "y": 246.5,
+      "w": 316.328125,
+      "h": 34,
+      "padL": 12,
+      "padT": 8,
+      "font": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+      "size": 12,
+      "color": "rgb(19, 23, 32)",
+      "lh": "16px"
+    },
+    "email": {
+      "x": 701.328125,
+      "y": 246.5,
+      "w": 316.328125,
+      "h": 34,
+      "padL": 12,
+      "padT": 8,
+      "font": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+      "size": 12,
+      "color": "rgb(19, 23, 32)",
+      "lh": "16px"
+    },
+    "company": {
+      "x": 369,
+      "y": 320.5,
+      "w": 316.328125,
+      "h": 34,
+      "padL": 12,
+      "padT": 8,
+      "font": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+      "size": 12,
+      "color": "rgb(19, 23, 32)",
+      "lh": "16px"
+    },
+    "notes": {
+      "x": 369,
+      "y": 468.5,
+      "w": 648.65625,
+      "h": 66,
+      "padL": 12,
+      "padT": 8,
+      "font": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+      "size": 12,
+      "color": "rgb(19, 23, 32)",
+      "lh": "16px"
+    },
+    "submit": {
+      "x": 369,
+      "y": 564.5,
+      "w": 648.65625,
+      "h": 40,
+      "padL": 16,
+      "padT": 8,
+      "font": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+      "size": 12,
+      "color": "oklch(0.129 0.042 264.695)",
+      "lh": "16px"
+    }
+  }
+}

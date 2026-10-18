@@ -1,0 +1,20 @@
+[
+  {
+    "key": "recommend",
+    "q": "Which sensor would you recommend for -80°C vaccine freezers?",
+    "status": 200,
+    "text": "For ultra‑low‑temperature vaccine freezers operating at –80 °C, the **Kelvyn Probe** is the appropriate sensor.\n\n**Key attributes that match this application**\n\n- **Operating range:** –80 °C to +30 °C, covering the full –80 °C freezer set‑point.  \n- **Accuracy:** NIST‑traceable calibrated ±0.1 °C, ensuring the precision required for mRNA vaccine stability.  \n- **Power:** Internal LiSOCl₂ primary cell rated for up to 5 years of continuous operation, eliminating battery‑change maintenance.  \n- **Connectivity:** LoRaWAN and NB‑IoT for reliable, low‑power data transmission; a Bluetooth LE diagnostic tap for on‑site troubleshooting.  \n- **Form factor:** IP68 submersible housing (112 × 48 × 26 mm) with a medical‑grade PT1000 platinum RTD probe that can be inserted through freezer seals without compromising thermal integrity.  \n\nThese specifications make the Kelvyn Probe the optimal choice for monitoring –80 °C vaccine storage environments while maintaining regulatory compliance and data integrity."
+  },
+  {
+    "key": "integration",
+    "q": "Can it integrate with SAP or our existing WMS?",
+    "status": 200,
+    "text": "Yes. Kelvyn’s REST API is published as an OpenAPI 3.1 specification and supports configurable outgoing webhooks. Using these interfaces you can stream real‑time temperature, humidity, battery status, GPS location and alert payloads directly into SAP S/4HANA, Manhattan Associates WMS, Oracle Transportation Management, or any custom data‑lake solution you operate.\n\nFor larger deployments (250 + sensors) the Enterprise plan adds dedicated Solutions Architects who can design and implement deeper, custom ERP integrations—including SAP and other WMS platforms—while maintaining the 99.99 % uptime SLA and 10‑year immutable data archive.\n\nIf you would like to discuss the integration details for your specific environment, please contact our solutions team at sales@kelvyn.io or call +1 (800) 535‑8960."
+  },
+  {
+    "key": "trial",
+    "q": "Is there a free trial?",
+    "status": 200,
+    "text": "Yes. Kelvyn provides a **30‑Day Free Pilot** for qualified pharmaceutical distributors, healthcare networks, and cold‑logistics carriers. The pilot includes:\n\n* 10 pre‑configured wireless sensors  \n* A cellular gateway deployed in your active facility  \n* Full access to the Kelvyn software platform  \n* No financial obligation  \n\nIf you believe you meet the qualification criteria, we can start the onboarding process right away."
+  }
+]
